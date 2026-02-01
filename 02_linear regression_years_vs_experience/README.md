@@ -36,12 +36,24 @@ This is a classic regression problem with a **strong positive linear relationshi
 
 ## 📷 Visualizations
 
+---
+
+### 🔹 Salary Distribution
+
+This histogram shows how salaries are spread across the dataset.
+
+<p align="center">
+  <img src="images/salary_distribution.png" width="600">
+</p>
+
+---
+
 ### 🔹 Years of Experience vs Salary (Scatter Plot)
 
 This plot shows a strong upward trend, indicating salary increases as experience increases.
 
 <p align="center">
-  <img src=r"C:\Users\Admin\OneDrive\Desktop\Sitaram_Github\AI_ML_projects\02_linear_regression_years_vs_experience\images\scatter_plot.png" width="600">
+  <img src="images/scatter_plot.png" width="600">
 </p>
 
 ---
@@ -50,7 +62,9 @@ This plot shows a strong upward trend, indicating salary increases as experience
 
 The red line represents the best-fit linear regression model over the data.
 
-![Regression Line](regression_fit_line.png)
+<p align="center">
+  <img src="images/regression_fit_line.png" width="600">
+</p>
 
 ---
 
@@ -59,15 +73,9 @@ The red line represents the best-fit linear regression model over the data.
 Residuals are the differences between actual and predicted salaries.  
 A fairly centered distribution suggests the model performs reasonably well.
 
-![Residual Distribution](residual_distribution.png)
-
----
-
-### 🔹 Salary Distribution
-
-This histogram shows how salaries are spread across the dataset.
-
-![Salary Distribution](salary_distribution.png)
+<p align="center">
+  <img src="images/residual_distribution.png" width="600">
+</p>
 
 ---
 
@@ -100,5 +108,3 @@ AI / ML Enthusiast | Project Management Professional
 ## 🤝 Acknowledgment
 This project was built as a hands-on learning exercise.  
 ChatGPT was used as a support tool for understanding concepts, improving code structure, debugging, and refining documentation.  
-
-Test line
