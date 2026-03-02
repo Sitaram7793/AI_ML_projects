@@ -1,44 +1,44 @@
-# 🏠 House Price Prediction – India
-### Linear Regression | End-to-End ML Project with Web App
+# 🏠 House Price Prediction – Multiple Feature Linear Regression
+An end-to-end Machine Learning project that predicts residential property prices based on house features such as area, number of bathrooms, grade, and location characteristics.  
+This project demonstrates the complete ML workflow:  
+Data Analysis → Feature Selection → Model Training → Model Evaluation → Residual Diagnostics → Model Saving  
 
-## 📌 Project Overview
-This project builds an end-to-end Machine Learning pipeline to predict house prices in India using Linear Regression. It demonstrates the complete ML workflow — from data analysis and visualization to model building, evaluation, and deployment through a simple web app.
+## 📌 Problem Statement
+Real estate price estimation is difficult because house prices depend on many factors — not just size. Buyers, sellers, and agents need a system that can estimate a property’s value using measurable features.
 
-The goal of this project is not just prediction, but understanding the data, validating assumptions, and interpreting results in a business context.
-
----
-
-## 🎯 Business Objective
-To develop a baseline house price estimation model that:
-
-- Predicts house prices based on property area
-- Helps understand how strongly area influences pricing
-- Provides a foundation for more advanced real-estate valuation models
+The goal of this project is to:
+- Predict house price using multiple features
+- Identify the most important factors affecting price
+- Evaluate if Linear Regression assumptions hold
+- Build a baseline model for future advanced models
 
 ---
 
-## 🌐 Web Application
-A simple HTML-based web interface allows users to enter the house area and get a predicted price instantly.
-This demonstrates how a trained ML model can be connected to a front-end for real-world usage. 
+## 📊 Dataset Description
 
-User Input: Area (sq. ft)  
-Output: Predicted house price
+The dataset contains residential property details such as:
+|Feature|Description|
+|-|-|
+|living area|usable interior house area|
+|lot area|total land area|
+|bedrooms	|number of bedrooms|
+|bathrooms	|number of bathrooms|
+|floors	|number of floors|
+|grade	|construction & material quality|
+|waterfront present	|whether house faces water|
+|basement area	|basement size|
+|number of views	|scenic view rating|
+|condition	|overall house condition|
+
+Target Variable: Price  
 
 ---
 
 ## 📂 Project Structure
-House-Price-Prediction-India/<br>
+01_linear_regression_house_price/<br>
 │<br>
 ├── data/<br>
 │   └── House Price India.csv<br>
-│<br>
-├── house_price_app/<br>
-│   └── templates/<br>
-│       ├── index.html<br>
-│   └── venv/<br>
-│   ├── app.py<br>
-│   ├── house_price_model.pkl<br>
-│   ├── requirements.txt<br>
 │<br>
 ├── images/<br>
 │   ├── price_distribution.png<br>
@@ -48,10 +48,7 @@ House-Price-Prediction-India/<br>
 │   └── residual_distribution.png<br>
 │<br>
 ├── notebook/<br>
-│   └── linear_regression_house_prices_india.ipynb<br>
-│<br>
-├── video/<br>
-│   └── house_price_indicator_webapp.mp4<br>
+│   └── linear_regression_house_price.ipynb<br>
 │<br>
 └── README.md<br>
 
@@ -66,7 +63,7 @@ House-Price-Prediction-India/<br>
 </p>
 
 **Insight:**  
-House prices show a right-skewed distribution, indicating the presence of premium properties that influence the average price.
+House prices show a right-skewed distribution, meaning a small number of premium properties significantly increase the average price.
 
 ---
 
@@ -76,7 +73,7 @@ House prices show a right-skewed distribution, indicating the presence of premiu
 </p>
 
 **Insight:**  
-There is a strong positive relationship between property area and price, making the dataset suitable for Linear Regression.
+Living area shows a strong positive relationship with house price — larger houses tend to cost more.
 
 ---
 
@@ -86,22 +83,29 @@ There is a strong positive relationship between property area and price, making 
 </p>
 
 **Insight:**  
-Numeric features show varying degrees of correlation with house prices, supporting informed feature selection.
+Important observations:
+
+- Living area → strongest influence on price
+- Grade → very important feature
+- Bathrooms → more impact than bedrooms
+- Basement & usable space → increases valuation
 
 ---
 
 ## 🧹 Data Preprocessing
-Key preprocessing steps include:
-- Capping outliers using the IQR method
-- Feature scaling
-- Train–test split
+Key preprocessing steps performed:
 
-Ensures stable, unbiased, and reliable model performance.
+- Removed unnecessary columns (ID, Date, coordinates, renovation info)
+- Selected relevant numerical features
+- Feature–target split
+- Train-test split (80% train, 20% test)
+
+This ensures the model learns general patterns rather than memorizing the dataset.
 
 ---
 
 ## 🤖 Model Training – Linear Regression
-A Linear Regression model was trained using **property area** as the independent variable.
+A Linear Regression model was trained using multiple independent variables (house features) to predict the target variable Price.
 
 ### 🔹 Actual vs Predicted Prices
 <p align="center">
@@ -109,11 +113,25 @@ A Linear Regression model was trained using **property area** as the independent
 </p>
 
 **Insight:**  
-Predictions closely follow actual values for mid-range properties, indicating a good baseline fit.
+The scatter plot shows predicted values closely follow actual values, especially for mid-range properties.
 
 ---
 
 ## 📈 Model Evaluation & Diagnostics
+
+Metrics used:
+
+- MAE (Mean Absolute Error) → average prediction error
+- RMSE (Root Mean Squared Error) → penalizes large errors
+- R² Score → how well features explain house price
+
+Model Performance
+
+- MAE ≈ 103,255
+- R² Score ≈ 0.74
+
+Interpretation:
+The model explains about 74% of price variation, which is a good baseline regression performance for a real estate dataset.
 
 ### 🔹 Residual Distribution
 <p align="center">
@@ -121,24 +139,17 @@ Predictions closely follow actual values for mid-range properties, indicating a 
 </p>
 
 **Insight:**  
-Residuals are centered around zero with near-normal distribution, suggesting minimal bias and acceptable model assumptions.
-
----
-
-## 📏 Performance Metrics
-- **MAE:** Average absolute prediction error  
-- **RMSE:** Penalizes larger errors  
-- **R² Score:** Measures explanatory power of the model  
-
-These metrics indicate the model performs reasonably well as a **baseline estimator**.
+The linear regression assumptions are reasonably satisfied and the model is not strongly biased.
 
 ---
 
 ## 🧠 Key Learnings
-- Area of the house is a strong driver of house prices
-- Linear Regression provides interpretability and transparency
-- Outlier handling significantly improves model stability
-- Residual analysis is critical before real-world deployment
+
+- Living area is the strongest predictor of house price
+- Property quality (grade) significantly affects valuation
+- More bathrooms and usable space increase price
+- Linear Regression provides interpretable results
+- Residual analysis is essential before deploying a model
 
 ---
 
@@ -148,19 +159,11 @@ These metrics indicate the model performs reasonably well as a **baseline estima
 - **matplotlib, seaborn**
 - **scikit-learn**
 - **Jupyter Notebook**
-- **HTML (for web interface)**
 
 ---
 
 ## 👤 Author
 **Sitaram Dalvi**  
-AI / ML Enthusiast | Project Management Professional  
-
----
-
-## 🤝 Acknowledgment
-This project was built as a hands-on learning exercise.  
-ChatGPT was used as a support tool for understanding concepts, improving code structure, debugging, and refining documentation.  
-
+AI / ML Enthusiast | Project Management Professional
 
 
